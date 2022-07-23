@@ -1,5 +1,7 @@
 # vue2work
 
+## [demo站](https://qiangzai.q6q.cc)
+
 ## Project setup
 ```
 yarn install
