@@ -37,6 +37,7 @@ export default {
       optionValue: "j",
       optionTimeValue: "1500",
       isAuto: false,
+      timer: null,
       objCateGoryData: {
         a: "动画",
         b: "漫画",
@@ -67,14 +68,6 @@ export default {
       },
     }),
   },
-  watch: {
-    optionTimeValue: {
-      handler(newValue, oldValue) {
-        this.isAuto = true;
-        this.getSelectOptionTime();
-      },
-    },
-  },
   mounted() {
     this.getHitokoto();
   },
@@ -83,13 +76,12 @@ export default {
       this.$store.dispatch("other/yuLu", this.optionValue);
     },
     getSelectOptionTime() {
-      if (this.isAuto) {
-        setInterval(() => {
-          this.getHitokoto();
-        }, +this.optionTimeValue);
-      }
-      this.isAuto = false;
+      clearInterval(this.timer);
+      this.timer = setInterval(this.getHitokoto, this.optionTimeValue);
     },
+  },
+  beforeDestroy() {
+    clearInterval(this.timer);
   },
 };
 </script>
@@ -107,7 +99,7 @@ export default {
   padding: 2vw;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: 1;
   align-items: center;
   .hitokoto {
     padding: 20px;
