@@ -2,7 +2,6 @@
 
 import axios from "axios";
 import nProgress from "nprogress";
-import "/node_modules/nprogress/nprogress.css";
 const req = axios.create({
   timeout: 5000,
 });
