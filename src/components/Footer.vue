@@ -1,5 +1,5 @@
 <template>
-  <div class="copyright">
+  <div class="animate__animated animate__fadeIn copyright">
     {{ author }}
   </div>
 </template>
@@ -17,10 +17,11 @@ export default {
 <style lang="less" scoped>
 .copyright {
   text-align: center;
-  background-color: pink;
+  background-color: #fff;
   width: 100%;
+  padding: 5px;
   position: fixed;
-  bottom: 5px;
+  bottom: 0px;
   color: #000000;
 }
 </style>

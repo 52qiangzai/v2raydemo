@@ -1,4 +1,4 @@
-import { getYulu } from "@/api";
+import { getYulu, getBgUrl } from "@/api";
 export default {
   namespaced: true,
   state: {
@@ -15,6 +15,7 @@ export default {
     async yuLu({ commit }, c) {
       let result = await getYulu(c);
       commit("YULU", result.hitokoto);
+      return "ok";
     },
   },
 };

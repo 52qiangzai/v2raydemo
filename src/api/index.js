@@ -41,4 +41,3 @@ export const getCode = ({ url, down = 0 }) => {
     });
   }
 };
-

@@ -1,12 +1,14 @@
 <template>
   <div class="main">
     <div v-if="hitokoto" class="hitokoto">
-      <p>
+      <p ref="hitokoto" class="animate__animated animate__bounceIn">
         {{ hitokoto }}
       </p>
     </div>
     <div v-else class="hitokoto">
-      <p>正在加载.....</p>
+      <p ref="hitokoto" class="animate__animated animate__bounceIn">
+        正在加载.....
+      </p>
     </div>
     <div class="switch">
       <select @change="getHitokoto" v-model="optionValue">
@@ -29,6 +31,7 @@
 </template>
 
 <script>
+import { nextTick } from "vue";
 import { mapState } from "vuex";
 export default {
   name: "Main",
@@ -36,7 +39,6 @@ export default {
     return {
       optionValue: "j",
       optionTimeValue: "1500",
-      isAuto: false,
       timer: null,
       objCateGoryData: {
         a: "动画",
@@ -68,12 +70,23 @@ export default {
       },
     }),
   },
-  mounted() {
+  created() {
     this.getHitokoto();
   },
   methods: {
     getHitokoto() {
       this.$store.dispatch("other/yuLu", this.optionValue);
+      if (this.hitokoto) {
+        this.$refs.hitokoto.setAttribute("class", "");
+      }
+      nextTick(() => {
+        if (this.$refs.hitokoto.className === "") {
+          this.$refs.hitokoto.setAttribute(
+            "class",
+            "animate__animated animate__bounceIn"
+          );
+        }
+      });
     },
     getSelectOptionTime() {
       clearInterval(this.timer);
@@ -101,6 +114,10 @@ export default {
   flex-direction: column;
   justify-content: 1;
   align-items: center;
+  background-image: url(https://tuapi.eees.cc/api.php?category=biying&type=302);
+  background-repeat: repeat;
+  background-attachment: fixed;
+  background-position: 50% 50%;
   .hitokoto {
     padding: 20px;
     width: 100vw;

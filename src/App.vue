@@ -14,9 +14,5 @@ export default {
   width: 100vw;
   height: 100vh;
   background-color: #f7f7f7;
-  /* background-image: url(https://tuapi.eees.cc/api.php?category=biying&type=302);
-  background-repeat: repeat;
-  background-attachment: fixed;
-  background-position: 50% 50%; */
 }
 </style>
